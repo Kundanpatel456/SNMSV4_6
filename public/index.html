@@ -1,80 +1,29 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home page</title>
-    </head>
-    <link rel="stylesheet" href="css/home.css" />
-    <body>
-        <script type="module">
-            import {InfluxDB, Point} from 'https://unpkg.com/@influxdata/influxdb-client-browser/dist/index.browser.mjs';
-      
-            let url="https://eu-central-1-1.aws.cloud2.influxdata.com/";
-            let token="WyskRtLpDBl9p78HZSz1usnpFi68j0t9LiB7YmxNixlzJKxE8JzAJ20C1WK8V2qpUX2MZourn-ulW-4v1chZGw==";
-            let org="Rpi-Project";
-      
-            const influx2 = new InfluxDB({url,token });
-      
-            let query2 = 'from(bucket: "NoiceData")\
-            |> range(start: -60h)\
-            |> filter(fn: (r) => r["_measurement"] == "my_data")\
-            |> filter(fn: (r) => r["DB"] == "db2")\
-            |> filter(fn: (r) => r["_field"] == "VolumeNorm")\
-            |> yield(name: "mean")'
-      
-            var Noicedata = [];
-            let text="";
-      
-            function queryExample(fluxQuery) {
-      
-              const queryApi = new InfluxDB({url, token}).getQueryApi(org)
-              queryApi.queryRows(fluxQuery, {
-                  next(row, tableMeta) {
-                     const o = tableMeta.toObject(row);
-                      // console.log(o._value);
-                      // console.log(o);
-                      Noicedata.push("<tr>"+"<td>"+"TimeStamp: "+o._time+" Decible: "+o._value+"</td>"+"</tr>");
-                      //console.log(typeof(o));
-                      // document.getElementById("template").innerHTML += o._value+"<br>";
-                  },
-                  complete() {
-                      console.log('FINISHED')
-                      // console.log(Noicedata)
-      
-                      Noicedata.forEach(printingVolume);
-                      // document.getElementById("template").innerHTML = Noicedata;
-                      document.getElementById("template").innerHTML = "<tr>"+"<th>"+"data from database"+"</th>"+"</tr>"+text;
-                      // console.log(text);
-      
-                  },
-                  error(error) {
-                      console.log('QUERY FAILED', error)
-                  },
-              });
-          }
-      
-          function printingVolume(item) {
-            text += item
-          }
-      
-          function sleep(ms) {
-              return new Promise(resolve => setTimeout(resolve, ms));
-           }
-      
-          queryExample(query2);
-          </script>
-        <div class="container">
-            <h3 id="name">Hello User</h3>
-            <button class="logout">log out</button>
-            <table id="template" border="1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
 
-                <tr>
-                    <td id="name">Hello User</td>
-                </tr> -->
-            <!-- </table>
-        </div>
-    
-    </body>
-</html>  -->
+    <link rel="stylesheet" href="css/form.css"/>
+
+</head>
+<body >
+
+    <div class="alert-box">
+        <p class="alert"></p>
+    </div>
+
+    <div class="form">
+        <h1 class="heading">login</h1>
+        <input type="text" placeholder="Name" autocomplete="off" class="username" required>
+        <input type="password" placeholder="Password" autocomplete="off" class="password" required>
+        <button class="submit-btn" id="submitBtn">log in</button>
+        <a href="register.html" class="link">don't have an account? Register one</a>
+    </div>
+
+    <script src="js/form.js"></script>
+    <!-- <script type="module" src="js/influx_login.js"></script> -->
+
+</body>
+</html>
