@@ -165,14 +165,14 @@ app.post('/login-user', (req, res) => {
               console.log("valid");
               // window.navigate("Noice")
               // res.redirect('/Noicedata');
-              openwin("http://" + req.headers['host'] + '/NoiceData.html');
-              console.log("http://" + req.headers['host'] + '/NoiceData.html');
+              openwin("http://www." + req.headers['host'] + '/NoiceData.html');
+              console.log("http://www." + req.headers['host'] + '/NoiceData.html');
               return res.redirect('/NoiceData');
 
 
               // window.replace("http://" + req.headers['host'] + '/NoiceData.html')
 
-              // res.writeHead(301, { "Location": "http://www." + req.headers['host'] + '/NoiceData.html' });
+              // res.writeHead(301, { "Location": "http://" + req.headers['host'] + '/NoiceData.html' });
               // return res.end()
 
               // res.json("CredentialsAreValid")
