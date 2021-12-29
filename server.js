@@ -21,7 +21,7 @@ const bodyParser = require('body-parser');
 const knex = require('knex');
 
 const openwin = require('open');
-
+const port = process.env.PORT || 3000
 // import { fetchUser } from './public/js/influx_login.js'
 
 // import { fetchUser } from './influx_login';
@@ -84,17 +84,6 @@ function fetchUser() {
     console.log(fetchAllUsers(query3));
     console.log("here");
 }
-
-
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//         host: '127.0.0.1',
-//         user: 'postgres',
-//         password: 'test',
-//         database: 'loginformytvideo'
-//     }
-// })
 
 
 const app = express();
@@ -207,6 +196,6 @@ app.post('/login-user', (req, res) => {
     });
 })
 
-app.listen(3030, (req, res) => {
+app.listen(port, (req, res) => {
     console.log('listening on port 3030......')
 })
