@@ -172,7 +172,7 @@ app.post('/login-user', (req, res) => {
 
               // window.replace("http://" + req.headers['host'] + '/NoiceData.html')
 
-              // res.writeHead(301, { "Location": "http://" + req.headers['host'] + '/NoiceData.html' });
+              // res.writeHead(301, { "Location": "http://www." + req.headers['host'] + '/NoiceData.html' });
               // return res.end()
 
               // res.json("CredentialsAreValid")
